@@ -114,10 +114,12 @@ const saveImage = () => {
     ctx.translate(canvas.width / 2, canvas.height / 2)
     if(rotate !== 0){ //if rotate isnt 0 rotate the canvas
         ctx.rotate(rotate * Math.PI / 180)
+        //added extra scale function to scale image because rotated image is not fully located in canvas
+        ctx.scale(0.5, 0.5)
     }
     ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`
     ctx.scale(flipHorizontal, flipVertical)
-    ctx.drawImage(previewImg, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height)  //drawImage() provides different ways to draw an image onto the canvas
+    ctx.drawImage(previewImg, -canvas.width / 2, -canvas.height / 2 , canvas.width, canvas.height)  //drawImage() provides different ways to draw an image onto the canvas
     // document.body.appendChild(canvas)
 
     const link = document.createElement('a')
